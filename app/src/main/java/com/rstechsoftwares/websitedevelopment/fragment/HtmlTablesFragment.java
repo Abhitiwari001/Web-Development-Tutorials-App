@@ -12,17 +12,22 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.rstechsoftwares.websitedevelopment.R;
 
 import io.github.kbiakov.codeview.CodeView;
 
 public class HtmlTablesFragment extends Fragment {
-
+    AdView mAdView;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_html_tables, container, false);
+        mAdView = rootView.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         TextView textView = rootView.findViewById(R.id.table_desc);
         textView.setText("The HTML tables allows to arrange data like text, images, links, other tables, etc. into rows and\n" +

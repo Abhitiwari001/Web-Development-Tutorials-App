@@ -12,17 +12,23 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.rstechsoftwares.websitedevelopment.R;
 
 import io.github.kbiakov.codeview.CodeView;
 
 public class AngularJsIntroductionFragment extends Fragment {
-
+AdView mAdView;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_angular_js_intro, container, false);
+        mAdView = rootView.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
         TextView textView = rootView.findViewById(R.id.angjs_intro);
         textView.setText("AngularJS is a JavaScript framework. It is a library written in JavaScript, AngularJS is distributed\n" +
                 "as a JavaScript file, It can be added to an HTML page with a <script> tag.\n" +

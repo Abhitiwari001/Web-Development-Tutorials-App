@@ -12,17 +12,29 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 import com.rstechsoftwares.websitedevelopment.R;
 
 import io.github.kbiakov.codeview.CodeView;
 
 public class FullScreenNavigationFragment extends Fragment {
-
+    private InterstitialAd mInterstitialAd;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_full_screen_navigation, container, false);
+        mInterstitialAd = new InterstitialAd(getContext());
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        mInterstitialAd.setAdListener(new AdListener(){
+            @Override
+            public void onAdLoaded() {
+                mInterstitialAd.show();
+            }
+        });
         TextView t=rootView.findViewById(R.id.fsnav1);
         t.setText("In the example below \"&times\" is used to display the close \"x\" symbol and \"&#9776;\" is used to\n" +
                 "display the menu bar icon \" \" ☰\"");

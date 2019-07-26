@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.rstechsoftwares.websitedevelopment.R;
+import com.rstechsoftwares.websitedevelopment.mentor2;
 
 public class MentorFragment extends Fragment {
 
@@ -24,8 +25,8 @@ public class MentorFragment extends Fragment {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String url1="https://docs.google.com/forms/d/16AgiF80sshzQ-30yhoOqXTlR5-hauONoPlBro-qSgFs/edit?usp=sharing";
-                Intent i= new Intent(getActivity(), webview.class);
+                //String url1="https://docs.google.com/forms/d/16AgiF80sshzQ-30yhoOqXTlR5-hauONoPlBro-qSgFs/edit?usp=sharing";
+                Intent i= new Intent(getActivity(), mentor2.class);
 
                 startActivity(i);
             }

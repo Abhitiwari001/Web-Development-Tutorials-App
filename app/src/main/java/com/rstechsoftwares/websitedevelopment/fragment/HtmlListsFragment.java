@@ -12,18 +12,29 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 import com.rstechsoftwares.websitedevelopment.R;
 
 import io.github.kbiakov.codeview.CodeView;
 
 public class HtmlListsFragment extends Fragment {
-
+    private InterstitialAd mInterstitialAd;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_html_lists, container, false);
-
+        mInterstitialAd = new InterstitialAd(getContext());
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        mInterstitialAd.setAdListener(new AdListener(){
+            @Override
+            public void onAdLoaded() {
+                mInterstitialAd.show();
+            }
+        });
         TextView textView = rootView.findViewById(R.id.list_desc);
         textView.setText("1.Unordered list: This can be created using <ul> tag,this will list items using plain bullets.\n" +
                 "2.Ordered list: This can be created usingn<ol> tag,this will use different schemes of numbers to list\n" +

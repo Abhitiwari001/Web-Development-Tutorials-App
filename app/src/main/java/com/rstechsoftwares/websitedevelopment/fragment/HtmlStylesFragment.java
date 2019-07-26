@@ -11,17 +11,29 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 import com.rstechsoftwares.websitedevelopment.R;
 
 import io.github.kbiakov.codeview.CodeView;
 
 public class HtmlStylesFragment extends Fragment {
-
+    private InterstitialAd mInterstitialAd;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_html_styles, container, false);
+        mInterstitialAd = new InterstitialAd(getContext());
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        mInterstitialAd.setAdListener(new AdListener(){
+            @Override
+            public void onAdLoaded() {
+                mInterstitialAd.show();
+            }
+        });
         CodeView codeView = rootView.findViewById(R.id.html_back_code);
         codeView.setCode("<!DOCTYPE html>\n<html>\n<body style=\"background-color: \nlightgrey\"> \n<h1>Background color</h1>\n<p>Background color changed.</p>\n</body>\n</html>");
         CodeView codeView1 = rootView.findViewById(R.id.html_text_code);

@@ -12,17 +12,22 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.rstechsoftwares.websitedevelopment.R;
 
 import io.github.kbiakov.codeview.CodeView;
 
 public class HtmlFormattingFragment extends Fragment {
-
+    AdView mAdView;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.fragment_html_formatting, container, false);
+        mAdView = rootView.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
         CodeView codeView = rootView.findViewById(R.id.html_bold_code);
         codeView.setCode("<!DOCTYPE html>\n<html>\n<head>\n<title>Bold Formatting</title>\n</head>\n<body>\n<p>The following word uses a\n<b>bold</b> typeface.</p>\n</body>\n</html>");
         CodeView codeView1 = rootView.findViewById(R.id.html_italic_code);

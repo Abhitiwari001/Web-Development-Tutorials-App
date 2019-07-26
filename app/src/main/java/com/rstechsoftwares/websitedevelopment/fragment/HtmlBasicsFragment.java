@@ -14,13 +14,14 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 import com.rstechsoftwares.websitedevelopment.R;
 
 import io.github.kbiakov.codeview.CodeView;
 
-public class HtmlBasicsFragment extends Fragment {
 
+
+public class HtmlBasicsFragment extends Fragment {
+    AdView mAdView;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -28,6 +29,9 @@ public class HtmlBasicsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_html_basics, container, false);
         //MobileAds.initialize(getContext(),"ca-app-pub-3940256099942544~3347511713");
 
+        mAdView = rootView.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         CodeView codeView = rootView.findViewById(R.id.code_view_basic);
         codeView.setCode("<!DOCTYPE html>\n<html>\n<head>\n<title>Title of the page</title>\n</head>\n<body>\n<h1>This is Heading</h1>\n<p>This is paragraph</p>\n</body>\n</html>");
         TextView textView = rootView.findViewById(R.id.html_def);

@@ -150,4 +150,7 @@ the dropdown gets activated by clicking the menu.</string>
         We establish long-term, committed relationship with clients by delivering services to their best satisfaction and with 24X7 support.
         We aim at translating the latest technologies in the online world into practical business solutions for clients.
         Quality is the guiding principle in everything we do.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

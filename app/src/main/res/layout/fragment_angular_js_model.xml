@@ -130,6 +130,7 @@ ng-untouched, ng-empty, ng-not-empty) including animations."
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
